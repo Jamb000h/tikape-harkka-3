@@ -1,27 +1,19 @@
 package app;
 
-import app.pojo.Company;
-import app.pojo.CompanyDao;
+import app.db.Database;
+import app.pojo.Employee;
+import app.pojo.EmployeeDao;
 
 public class Main {
 
     public static void main(String args[]) throws Exception {
-        DataBase db = new DataBase("test2.db");
+        Database database = new Database("test2.db");
 
-            //db.createTable();
-            //db.createData();
-        
+        EmployeeDao employeeDao = new EmployeeDao(database);
 
-        CompanyDao companyDao = new CompanyDao(db);
-        //companyDao.findAll().forEach(s->System.out.println(s));
-             
-        
-        Company c = new Company("Pekka", 37, "Haaga", 3560.0f);
-        companyDao.create(c);
-        
-        companyDao.findAll().forEach(s->System.out.println(s));
+        Employee e = new Employee("Pekka", 37, "Haaga", 3560.0f);
+        employeeDao.create(e);
 
+        employeeDao.findAll().forEach(s -> System.out.println(s));
     }
-
-
 }

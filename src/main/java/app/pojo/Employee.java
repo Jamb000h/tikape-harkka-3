@@ -1,13 +1,13 @@
 package app.pojo;
 
-public class Company {
+public class Employee {
     int id;
     String name;
     int age;
     String address;
     float salary;
 
-    public Company(int id, String name, int age, String address, float salary) {
+    public Employee(int id, String name, int age, String address, float salary) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -15,7 +15,7 @@ public class Company {
         this.salary = salary;
     }
 
-    public Company(String name, int age, String address, float salary) {
+    public Employee(String name, int age, String address, float salary) {
         this.name = name;
         this.age = age;
         this.address = address;
@@ -24,7 +24,7 @@ public class Company {
     
     @Override
     public String toString() {
-        return name + "("+id+") "+address;
+        return name + " ("+id+") "+address;
     }
     
 
