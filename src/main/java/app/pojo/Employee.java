@@ -1,11 +1,11 @@
 package app.pojo;
 
 public class Employee {
-    int id;
-    String name;
-    int age;
-    String address;
-    float salary;
+    private int id;
+    private String name;
+    private int age;
+    private String address;
+    private float salary;
 
     public Employee(int id, String name, int age, String address, float salary) {
         this.id = id;
@@ -26,6 +26,22 @@ public class Employee {
     public String toString() {
         return name + " ("+id+") "+address;
     }
-    
 
+    public String getAddress() {
+        return address;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+    
+    
 }

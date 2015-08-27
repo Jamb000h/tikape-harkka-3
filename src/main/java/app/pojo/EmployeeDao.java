@@ -15,10 +15,10 @@ public class EmployeeDao {
     public void create(Employee company) throws SQLException {
         String sql = "INSERT INTO EMPLOYEE "
                 + "(NAME,AGE,ADDRESS,SALARY) VALUES ("
-                + s(company.name) + ", "
-                + company.age + ", "
-                + s(company.address) + ", "
-                + company.salary + " );";
+                + s(company.getName()) + ", "
+                + company.getAddress() + ", "
+                + s(company.getAddress()) + ", "
+                + company.getSalary() + " );";
 
         db.update(sql);
     }

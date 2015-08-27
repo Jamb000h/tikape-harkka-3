@@ -10,8 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Database {
 
@@ -53,9 +51,9 @@ public class Database {
     public void createTable() throws SQLException {
         Statement stmt = connection.createStatement();
         String sql = "CREATE TABLE EMPLOYEE "
-                + "(ID INTEGER PRIMARY KEY     NOT NULL,"
-                + " NAME           TEXT    NOT NULL, "
-                + " AGE            INT     NOT NULL, "
+                + "(ID             INTEGER PRIMARY KEY      NOT NULL,"
+                + " NAME           TEXT                     NOT NULL, "
+                + " AGE            INT                      NOT NULL, "
                 + " ADDRESS        CHAR(50), "
                 + " SALARY         REAL)";
         stmt.executeUpdate(sql);
@@ -86,18 +84,6 @@ public class Database {
         connection.commit();
     }
 
-    public int nextId(String table) throws SQLException {
-        List<Integer> ids = queryAndCollect("SELECT * FROM " + table + ";", rs -> {
-            return new Integer(rs.getInt("id"));
-        });
-
-        if (ids.isEmpty()) {
-            return 1;
-        }
-
-        return 1 + ids.stream().sorted().mapToInt(i -> i).max().getAsInt();
-    }
-
     public void update(String sql) throws SQLException {
         connection.setAutoCommit(false);
         Statement stmt = connection.createStatement();
@@ -126,17 +112,6 @@ public class Database {
         rs.close();
         stmt.close();
         return rows;
-    }
-
-    public List<Employee> getData(String sql) throws SQLException {
-        return queryAndCollect(sql, rs -> {
-            return new Employee(
-                    rs.getInt("id"),
-                    rs.getString("name"),
-                    rs.getInt("age"),
-                    rs.getString("address"),
-                    rs.getFloat("salary"));
-        });
     }
 
     public List<Employee> getData() throws SQLException {

@@ -14,6 +14,9 @@ public class Main {
         Employee e = new Employee("Pekka", 37, "Haaga", 3560.0f);
         employeeDao.create(e);
 
-        employeeDao.findAll().forEach(s -> System.out.println(s));
+        for (Employee employee : employeeDao.findAll()) {
+            System.out.println(employee);
+        }
+
     }
 }
