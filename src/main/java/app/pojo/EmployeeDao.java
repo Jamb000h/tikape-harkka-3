@@ -16,7 +16,7 @@ public class EmployeeDao {
         String sql = "INSERT INTO EMPLOYEE "
                 + "(NAME,AGE,ADDRESS,SALARY) VALUES ("
                 + s(company.getName()) + ", "
-                + company.getAddress() + ", "
+                + company.getAge() + ", "
                 + s(company.getAddress()) + ", "
                 + company.getSalary() + " );";
 
