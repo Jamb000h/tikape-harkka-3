@@ -22,3 +22,5 @@ JOIN Album a1 ON t.AlbumId = a1.AlbumId
 JOIN Artist a2 ON a1.ArtistId = a2.ArtistId
 WHERE p1.Name = "Brazilian Music";
 
+SELECT name, salary FROM EMPLOYEE WHERE name LIKE '%tutkija%' UNION SELECT "palkkojen keskiarvo", AVG(salary) FROM EMPLOYEE WHERE name LIKE '%tutkija%';
+
