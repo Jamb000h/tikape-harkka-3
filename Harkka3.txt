@@ -1,0 +1,24 @@
+Minkä nimisillä albumeilla Eric Clapton esiintyy?
+
+SELECT Album.Title, Artist.Name FROM Album
+JOIN Artist ON Album.ArtistId = Artist.ArtistId
+WHERE Artist.Name = "Eric Clapton";
+
+Minkä nimisillä soittolistoilla Eric Clapton esiintyy?
+
+SELECT DISTINCT p1.Name, a2.Name FROM Playlist p1
+JOIN PlaylistTrack p2 ON p1.PlaylistId = p2.PlaylistId
+JOIN Track t ON p2.TrackId = t.TrackId
+JOIN Album a1 ON t.AlbumId = a1.AlbumId
+JOIN Artist a2 ON a1.ArtistId = a2.ArtistId
+WHERE a2.Name = "Eric Clapton";
+
+Minkä nimiset artistit esiintyvät soittolistalla “Brazilian Music”? (näitä yhteensä 12)
+
+SELECT DISTINCT a2.Name FROM Playlist p1
+JOIN PlaylistTrack p2 ON p1.PlaylistId = p2.PlaylistId
+JOIN Track t ON p2.TrackId = t.TrackId
+JOIN Album a1 ON t.AlbumId = a1.AlbumId
+JOIN Artist a2 ON a1.ArtistId = a2.ArtistId
+WHERE p1.Name = "Brazilian Music";
+

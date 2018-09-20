@@ -37,6 +37,28 @@ public class EmployeeDao {
                     rs.getFloat("salary"));
         });
     }
+    
+    public List<Employee> findAllWithSalaryAtLeast(double palkka) throws SQLException {
+        return db.queryAndCollect("SELECT * FROM EMPLOYEE WHERE salary >=" + palkka + ";", rs -> {
+            return new Employee(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("age"),
+                    rs.getString("address"),
+                    rs.getFloat("salary"));
+        });
+    }
+    
+    public List<Employee> findAmmattiryhmaWithName(String name) throws SQLException {
+        return db.queryAndCollect("SELECT * FROM EMPLOYEE WHERE name LIKE '%" + name + "%' ORDER BY salary DESC;", rs -> {
+            return new Employee(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("age"),
+                    rs.getString("address"),
+                    rs.getFloat("salary"));
+        });
+    }
 
     public Employee find(int id) throws SQLException {
         List<Employee> matches = db.queryAndCollect("SELECT * FROM EMPLOYEE WHERE ID=" + id, rs -> {
